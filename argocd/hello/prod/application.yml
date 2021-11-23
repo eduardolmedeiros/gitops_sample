@@ -1,0 +1,15 @@
+project: default
+source:
+  repoURL: 'https://github.com/eduardolmedeiros/hello-app-go-sample'
+  path: helm-chart
+  targetRevision: HEAD
+  helm:
+    valueFiles:
+      - values-prod.yaml
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: default
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
