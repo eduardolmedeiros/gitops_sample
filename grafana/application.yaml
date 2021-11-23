@@ -14,8 +14,8 @@ spec:
       jsonnet:
         # A list of Jsonnet External Variables
         extVars:
-        - name: foo
-          value: bar
+        - name: serviceType
+          value: NodePort
 
 
  # Sync policy
