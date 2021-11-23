@@ -9,14 +9,8 @@ spec:
     repoURL: https://grafana.github.io/helm-charts
     targetRevision: 6.17.7
     chart: grafana
-    # directory
-    directory:
-      recurse: true
-      jsonnet:
-        # A list of Jsonnet External Variables
-        extVars:
-        - name: service.type
-          value: NodePort
+    service:
+      type: NodePort
 
  # Sync policy
   syncPolicy:
