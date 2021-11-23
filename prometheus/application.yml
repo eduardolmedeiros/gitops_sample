@@ -15,7 +15,8 @@ spec:
 
   # Source of the application manifests
   source:
-    repoURL: https://prometheus-community.github.io/helm-charts
+    repoURL: https://github.com/prometheus-community/helm-charts
+    targetRevision: prometheus-14.11.1
     chart: prometheus
 
     # helm specific config
