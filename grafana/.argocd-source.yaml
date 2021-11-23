@@ -1,2 +1,0 @@
-kustomize:
-  service.type: NodePort
