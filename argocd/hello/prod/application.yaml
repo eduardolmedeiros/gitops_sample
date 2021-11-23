@@ -1,0 +1,25 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hello
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/eduardolmedeiros/hello-app-go-sample'
+    path: helm-chart
+  targetRevision: HEAD
+  helm:
+    valueFiles:
+      - values-prod.yaml
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:     # Sync options which modifies sync behavior
+    - CreateNamespace=true # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.
+
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default

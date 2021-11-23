@@ -1,3 +1,4 @@
+
 project: default
 source:
   repoURL: 'https://github.com/eduardolmedeiros/hello-app-go-sample'
