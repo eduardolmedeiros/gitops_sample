@@ -18,7 +18,7 @@ spec:
 
         image:
           repository: emedeiros/hello-app-go-sample
-          tag: "0.2"
+          tag: "0.1"
 
         replicaCount: 3
         autoscaling:
