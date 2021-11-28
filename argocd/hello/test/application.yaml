@@ -11,8 +11,21 @@ spec:
     path: helm-chart
     targetRevision: HEAD
     helm:
-      valueFiles:
-        - values-test.yaml
+      values: |
+        serviceAccount:
+          create: true
+          name: "hello-app-go-sample-test"
+
+        image:
+          repository: emedeiros/hello-app-go-sample
+          tag: "0.2"
+
+        replicaCount: 3
+        autoscaling:
+          enabled: true
+          minReplicas: 1
+          maxReplicas: 3
+          targetCPUUtilizationPercentage: 80
   syncPolicy:
     automated:
       prune: true
