@@ -1,15 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus
+  name: grafana
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://prometheus-community.github.io/helm-charts
-    targetRevision: 21.0.0
-    chart: kube-prometheus-stack
-
+    repoURL: https://grafana.github.io/helm-charts
+    targetRevision: 6.17.7
+    chart: grafana
+    helm:
+      values: |
+        service:
+          type: NodePort
+          port: 8080
 
  # Sync policy
   syncPolicy:
