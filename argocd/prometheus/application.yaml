@@ -11,7 +11,9 @@ spec:
     chart: kube-prometheus-stack
     helm:
       values: |
-        grafana.service.portName: NodePort
+        grafana
+          service:
+            type: NodePort
 
  # Sync policy
   syncPolicy:
