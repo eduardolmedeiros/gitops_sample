@@ -9,6 +9,9 @@ spec:
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 19.2.3
     chart: kube-prometheus-stack
+    helm:
+      values: |
+        grafana.service.portName: NodePort
 
  # Sync policy
   syncPolicy:
