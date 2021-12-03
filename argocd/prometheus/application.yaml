@@ -16,10 +16,11 @@ spec:
             type: NodePort
             port: 8080
           prometheus:
-            annotations:
-              prometheus.io/scrape: "true"
-              prometheus.io/path: /metrics
-              prometheus.io/port: "8090"
+            metadata:
+              annotations:
+                prometheus.io/scrape: "true"
+                prometheus.io/path: /metrics
+                prometheus.io/port: "8090"
 
  # Sync policy
   syncPolicy:
