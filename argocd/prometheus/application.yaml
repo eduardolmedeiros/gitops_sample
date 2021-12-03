@@ -11,9 +11,10 @@ spec:
     chart: kube-prometheus-stack
     helm:
       values: |
-      metadata:
-        annotations:
-          argocd.argoproj.io/sync-options: Replace=true
+        kind: CustomResourceDefinition
+          metadata:
+            annotations:
+              argocd.argoproj.io/sync-options: Replace=true
 
  # Sync policy
   syncPolicy:
