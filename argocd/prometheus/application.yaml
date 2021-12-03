@@ -11,9 +11,10 @@ spec:
     chart: kube-prometheus-stack
     helm:
       values: |
-        grafana
+        grafana:
           service:
             type: NodePort
+            port: 8080
 
  # Sync policy
   syncPolicy:
