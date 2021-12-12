@@ -6,7 +6,7 @@ metadata:
   name: hello
   namespace: argocd
 spec:
-  project: production
+  project: default
   source:
     repoURL: 'https://github.com/eduardolmedeiros/hello-app-go-sample'
     path: helm-chart

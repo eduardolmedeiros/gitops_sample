@@ -7,7 +7,7 @@ This is a repository for learning and study purpose.
 
 * helm
 * argocd
-* minikube
+* minikube (enable hpa: `minikube addons enable metrics-server`)
 
 ## 2. Install argocd via helm
 
@@ -38,6 +38,22 @@ This is a repository for learning and study purpose.
 
 ```
     kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
-    minikube service list
+    minikube service argo-cd-argocd-server -n argocd
 ```
 
+### 6. Grafana
+```
+    minikube service prometheus-grafana
+    login: admin
+    pass: prom-operator
+```
+
+* Import dashboards:
+  - ArgoCD: https://grafana.com/grafana/dashboards/14584
+  - JVM Micrometer: https://grafana.com/grafana/dashboards/4701
+
+### 7. Prometheus access
+```
+k port-forward svc/prometheus-operated -n monitoring 9090
+http://localhost:9090
+```

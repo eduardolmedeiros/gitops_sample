@@ -2,25 +2,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: hello
+  name: hello-java
   namespace: argocd
 spec:
-  project: default
+  project: default 
   source:
-    repoURL: 'https://github.com/eduardolmedeiros/hello-app-go-sample'
-    path: helm-chart
+    repoURL: 'https://github.com/eduardolmedeiros/hello-k8s-app-helm-chart'
+    path: .
     targetRevision: HEAD
     helm:
       values: |
-        serviceAccount:
-          create: true
-          name: "hello-app-go-sample-stage"
-
         image:
-          repository: emedeiros/hello-app-go-sample
-          tag: "0.1"
+          repository: emedeiros/hello-k8s-app
+          tag: "latest"
 
-        replicaCount: 3
+        replicaCount: 2
         autoscaling:
           enabled: true
           minReplicas: 1
@@ -35,4 +31,4 @@ spec:
 
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: stage
+    namespace: demo 
