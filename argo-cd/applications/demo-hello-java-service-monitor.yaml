@@ -1,0 +1,19 @@
+---
+# https://github.com/prometheus-operator/prometheus-operator
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: hello-k8s-app
+  namespace: demo
+  labels:
+    release: prometheus
+    app.kubernetes.io/name: hello-k8s-app
+spec:
+  endpoints:
+  - port: http
+    path: /actuator/prometheus
+    interval: 30s
+    scrapeTimeout: 30s
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: hello-k8s-app
