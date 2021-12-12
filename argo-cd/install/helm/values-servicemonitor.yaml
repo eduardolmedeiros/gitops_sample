@@ -1,0 +1,28 @@
+server:
+  service:
+    type: NodePort
+  metrics:
+    enabled: true
+    # required for prometheus operator
+    serviceMonitor:
+      enabled: true
+      additionalLabels:
+        release: prometheus
+
+controller:
+  metrics: 
+    enabled: true
+    # required for prometheus operator
+    serviceMonitor:
+      enabled: true
+      additionalLabels:
+        release: prometheus
+
+repoServer:
+  metrics: 
+    enabled: true
+    # required for prometheus operator
+    serviceMonitor:
+      enabled: true
+      additionalLabels:
+        release: prometheus

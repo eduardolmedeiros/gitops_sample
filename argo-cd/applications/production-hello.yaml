@@ -1,34 +1,27 @@
 
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: hello-prod
+  name: hello
   namespace: argocd
 spec:
-  project: default
+  project: production
   source:
     repoURL: 'https://github.com/eduardolmedeiros/hello-app-go-sample'
     path: helm-chart
     targetRevision: HEAD
     helm:
       values: |
-        service:
-          type: NodePort
-          port: 8080
-
-        serviceAccount:
-          create: true
-          name: "hello-app-go-sample"
-
         image:
           repository: emedeiros/hello-app-go-sample
           tag: "0.1"
 
-        replicaCount: 4
+        replicaCount: 3
         autoscaling:
           enabled: true
-          minReplicas: 2
-          maxReplicas: 4
+          minReplicas: 1
+          maxReplicas: 3
           targetCPUUtilizationPercentage: 80
   syncPolicy:
     automated:

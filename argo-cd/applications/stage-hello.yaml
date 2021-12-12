@@ -2,10 +2,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: hello-test
+  name: hello
   namespace: argocd
 spec:
-  project: default
+  project: stage
   source:
     repoURL: 'https://github.com/eduardolmedeiros/hello-app-go-sample'
     path: helm-chart
@@ -14,7 +14,7 @@ spec:
       values: |
         serviceAccount:
           create: true
-          name: "hello-app-go-sample-test"
+          name: "hello-app-go-sample-stage"
 
         image:
           repository: emedeiros/hello-app-go-sample
@@ -35,4 +35,4 @@ spec:
 
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: test
+    namespace: stage
