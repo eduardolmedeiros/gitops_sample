@@ -21,6 +21,11 @@ This is a repository for learning and study purpose.
     kubectl apply -f argo-cd/projects
 ```
 
+## optional recursive via cli
+```
+    argocd app create gitops --repo https://github.com/eduardolmedeiros/gitops_sample.git --revision feature/improvements --path argo-cd/applications --dest-namespace argocd --dest-server https://kubernetes.default.svc --directory-recurse
+```
+
 ### 4. Create applications (hello + prometheus operator)
 
 ```
